@@ -36,10 +36,12 @@
     </div>
     {% else %}
     <!-- Not Logged In -->
-    <a href="{% url 'login' %}">
-        <img src="./assets/avatar.svg" />
-        <p>Login</p>
-    </a>
+    <div style="height: 100%; display: flex; align-items: center;">
+        <a href="{% url 'login' %}">
+            <!-- <img src="./assets/avatar.svg" /> -->
+            <p>Login</p>
+        </a>
+    </div>
     {% endif %}
 
 
