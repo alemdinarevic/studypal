@@ -59,8 +59,8 @@ def home(request):
         Q(name__icontains=q) |
         Q(description__icontains=q)
         )
-    topics = Topic.objects.all()
-    room_count = rooms.count
+    topics = Topic.objects.all()[0:5]
+    room_count = rooms.count()
     room_messages = Message.objects.filter(Q(room__name__icontains=q))
 
     context = { 
@@ -169,7 +169,8 @@ def topicsPage(request):
 
 def activityPage(request):
     room_messages = Message.objects.all()
-    return render(request, 'base/activity.html', {'room_messages': room_messages})
+    context = { 'room_messages': room_messages }
+    return render(request, 'base/activity.html', context)
 
 @login_required(login_url='login')
 def updateUser(request):
